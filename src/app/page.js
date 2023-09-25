@@ -27,7 +27,7 @@ export default function Home() {
 
       <div
         className="lg:hidden overflow-hidden w-full h-full relative left-0 top-0 bg-gradient-to-b from-[#4285F4] to-[#286DE0]"
-        // style={{ clipPath: "polygon(0 0, 100% 0%, 80% 100%, 0% 100%)" }}
+        
       >
         <div className="absolute w-full h-29 left-[46%] top-14 font-poppins font-bold text-24 leading-[122.69%] tracking-[0.015em] text-white">
           Logo
