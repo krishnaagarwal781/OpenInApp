@@ -12,12 +12,12 @@ const Login = () => {
     if(session.status === "authenticated"){
         return <button onClick={()=>signOut("google")}>Logout</button>
     }
-    if(session.status === "unauthenticated"){
-        return <p>Hacker h bhai hacker hai</p>
-    }
+    // if(session.status === "unauthenticated"){
+    //     return <p>Hacker h bhai hacker hai</p>
+    // }
   return (
     <div>
-        <button onClick={()=>signIn("google")}>Login With Google</button>
+        <button className='bg-black text-white fixed top-10 left-10 ' onClick={()=>signIn("google")}>Login With Google</button>
     </div>
   )
 }

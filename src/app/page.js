@@ -18,7 +18,7 @@ export default function Home() {
         </div>
         <div className="flex absolute h-[48px] top-[909px] left-[144.5px] justify-between w-[299px]">
           <BsGithub size="44px" color="white" />
-          <AiFillTwitterCircle size="45px" color="whi te" />
+          <AiFillTwitterCircle size="45px" color="white" />
           <AiFillLinkedin size="46px" color="white" />
           <BiLogoDiscord size="46px" color="white" />
         </div>
