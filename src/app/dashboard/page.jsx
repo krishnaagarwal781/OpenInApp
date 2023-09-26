@@ -16,9 +16,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import DoughnutChart from "@/components/DoughnutChart";
 import Modal2 from "@/components/Addprofile";
 import { useRouter } from "next/navigation";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { getSession } from "next-auth/next";
-function dashboard() {
+import { signOut, useSession } from "next-auth/react";
+
+function Dashboard() {
   const [isModal2Open, setIsModal2Open] = useState(false);
   const session = useSession();
   const router = useRouter();
@@ -399,4 +399,4 @@ function dashboard() {
   );
 };
 
-export default dashboard;
+export default Dashboard;
