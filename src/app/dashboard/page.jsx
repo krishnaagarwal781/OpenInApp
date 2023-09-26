@@ -175,7 +175,7 @@ const dashboard = () => {
                 <input
                   type="text"
                   id="search-navbar"
-                  className="block w-full p-2 pl-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full p-2 pl-4 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Search..."
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -202,7 +202,7 @@ const dashboard = () => {
               {/* <FaUserCircle size={24} className="mt-1 ml-4" /> */}
               <div>
                 {sessionProfile ? (
-                  <img className="w-8 h-8 rounded-[50%]" src={sessionProfile} alt="User profile icon" />
+                  <img className="w-8 h-8 rounded-[50%] ml-4 mr-4" src={sessionProfile} alt="User profile icon" />
                 ) : (
                   <FaUserCircle size={24} className="mt-1 ml-4" />
                 )}
@@ -258,7 +258,7 @@ const dashboard = () => {
                 <input
                   type="text"
                   id="search-navbar"
-                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Search..."
                 />
               </div>
