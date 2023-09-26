@@ -17,10 +17,12 @@ import DoughnutChart from "@/components/DoughnutChart";
 import Modal2 from "@/components/Addprofile";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { getSession } from "next-auth/next";
 const dashboard = () => {
   const [isModal2Open, setIsModal2Open] = useState(false);
   const session = useSession();
   const router = useRouter();
+  const sessionProfile = session?.data?.user?.image;
   console.log(session);
   if (session.status === "unauthenticated") {
     router.push("/");
@@ -198,6 +200,13 @@ const dashboard = () => {
 
               <FaRegBell size={24} className="mt-1 ml-4" />
               <FaUserCircle size={24} className="mt-1 ml-4" />
+              <div className="w-4 h-4 rounded-r-full">
+                {sessionProfile ? (
+                  <img src={sessionProfile} alt="User profile icon" />
+                ) : (
+                  <FaUserCircle size={24} className="mt-1 ml-4" />
+                )}
+              </div>
               <button onClick={() => signOut("google")}>Logout</button>
               <button
                 data-collapse-toggle="navbar-search"
