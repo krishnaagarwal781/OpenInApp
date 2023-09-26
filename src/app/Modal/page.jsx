@@ -1,6 +1,9 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-
+import { PiWhatsappLogo } from "react-icons/pi";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { AiOutlineYoutube } from "react-icons/ai";
+import { CiMail } from "react-icons/ci";
 const Modal1 = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showContactInput, setShowContactInput] = useState(false);
@@ -43,17 +46,57 @@ const Modal1 = () => {
       {showValues ? (
         <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
           <div className="flex justify-between pl-[24px] pr-[24px]">
-            Entered Values
-            <button className="text-[#999CA0]" onClick={() => setShowValues(false)}>
+            <h1 className="text-[30px]">{name}</h1>
+
+            <button
+              className="text-[#999CA0]"
+              onClick={() => setShowValues(false)}
+            >
               X
             </button>
           </div>
           <div className="pl-5 pr-5">
-            <p><strong>Name:</strong> {name}</p>
-            <p><strong>Email:</strong> {email}</p>
-            <p><strong>Phone:</strong> {phone}</p>
-            {instagram && <p><strong>Instagram:</strong> {instagram}</p>}
-            {youtube && <p><strong>YouTube:</strong> {youtube}</p>}
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-[50%] bg-green-100 flex justify-center items-center">
+                <PiWhatsappLogo color="green" size="25px" />
+              </div>
+              <span>{phone}</span>
+            </div>
+
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-[50%] bg-purple-200 flex justify-center items-center">
+                <CiMail color="purple" size="25px" />
+              </div>
+              <span>{email}</span>
+            </div>
+            {instagram && (
+              <div className="flex items-center">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                  <div className="w-8 h-8 rounded-[50%] bg-red-200 flex justify-center items-center">
+                    <AiOutlineInstagram color="red" size="25px" />
+                  </div>
+                </a>
+                <span>
+                  <a href={instagram} target="_blank" rel="noopener noreferrer">
+                    {instagram}
+                  </a>
+                </span>
+              </div>
+            )}
+            {youtube && (
+              <div className="flex items-center">
+                <a href={youtube} target="_blank" rel="noopener noreferrer">
+                  <div className="w-8 h-8 rounded-[50%] bg-red-300 flex justify-center items-center">
+                    <AiOutlineYoutube color="red" size="25px" />
+                  </div>
+                </a>
+                <span>
+                  <a href={youtube} target="_blank" rel="noopener noreferrer">
+                    {youtube}
+                  </a>
+                </span>
+              </div>
+            )}
           </div>
         </div>
       ) : (
@@ -64,10 +107,18 @@ const Modal1 = () => {
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col items-center ml-5">
-              Basic <p className="w-[170px]" style={{ backgroundColor: basicColor, height: '1px' }}></p>
+              Basic{" "}
+              <p
+                className="w-[170px]"
+                style={{ backgroundColor: basicColor, height: "1px" }}
+              ></p>
             </div>
             <div className="flex flex-col items-center mr-5">
-              Contact <p className="w-[170px]" style={{ backgroundColor: contactColor, height: '1px' }}></p>
+              Contact{" "}
+              <p
+                className="w-[170px]"
+                style={{ backgroundColor: contactColor, height: "1px" }}
+              ></p>
             </div>
           </div>
           <div className="pl-5 pr-5">
@@ -131,7 +182,9 @@ const Modal1 = () => {
           <div className="flex justify-end">
             {currentStep === 1 ? (
               <button
-                className={`bg-[#3E84F8] text-white rounded-md p-2 ${!areRequiredFieldsFilled() && "cursor-not-allowed opacity-50"}`}
+                className={`bg-[#3E84F8] text-white rounded-md p-2 ${
+                  !areRequiredFieldsFilled() && "cursor-not-allowed opacity-50"
+                }`}
                 onClick={handleNextClick}
                 disabled={!areRequiredFieldsFilled()}
               >
@@ -161,4 +214,3 @@ const Modal1 = () => {
 };
 
 export default Modal1;
-
