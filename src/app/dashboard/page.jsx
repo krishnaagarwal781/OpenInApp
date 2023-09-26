@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { FiPieChart } from "react-icons/fi";
-import { BsTags } from "react-icons/bs";
+import { BsTags, BsWhatsapp } from "react-icons/bs";
 import { TbCalendarTime } from "react-icons/tb";
 import { BiUserCircle } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { LuBanknote } from "react-icons/lu";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineInstagram, AiOutlineLike, AiOutlineYoutube } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import "./index.css";
 import UserGuestChart from "@/components/UserGuestChart";
@@ -17,6 +17,7 @@ import DoughnutChart from "@/components/DoughnutChart";
 import Modal2 from "@/components/Addprofile";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import { CiMail } from "react-icons/ci";
 
 function Dashboard() {
   const [isModal2Open, setIsModal2Open] = useState(false);
@@ -141,7 +142,7 @@ function Dashboard() {
                 href="#"
                 className="flex items-center p-1 text-gray-100 -mb-1 rounded-lg hover:text-white hover:font-semibold group"
               >
-                <span className="flex-1 ml-4 whitespace-nowrap ">Help</span>
+                <span className="flex-1 ml-4 whitespace-nowrap">Help</span>
               </a>
             </li>
             <li>
@@ -361,7 +362,7 @@ function Dashboard() {
             </div>
           </a>
         </div>
-        <div className="block px-8 py-4 h-[75vh] w-full mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
+        <div className="block px-8 py-4 h-[30vh] sm:h-[40vh] md:h-[75vh] w-full mt-10 bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
           <div className="flex justify-between items-center px-5 py-2">
             <div>
               <h5 className="text-gray-900 text-xl font-bold">Activities</h5>
@@ -378,7 +379,9 @@ function Dashboard() {
               </span>
             </div>
           </div>
-          <UserGuestChart />
+          <div className="mt-12 sm:mt-0">
+            <UserGuestChart />
+          </div>
         </div>
         <div className="flex gap-4 mt-10 flex-col sm:flex-row">
           <div className="block w-full sm:w-1/2 px-8 py-4  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
@@ -405,7 +408,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg ">
+          <div className="flex flex-col items-center justify-center relative w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg ">
             {shouldDisplayAddProfileButton ? (
               <>
                 {" "}
@@ -421,22 +424,29 @@ function Dashboard() {
               // Display the data if it exists
               // You can customize the rendering of the data here
               <>
-                <div className="text-gray-900 font-bold text-xl">
-                  Name: {profileData.name}
-                </div>
-                <div className="text-gray-900 font-bold text-xl">
-                  Email: {profileData.email}
-                </div>
-                {profileData.youtube && (
-                  <div className="text-gray-900 font-bold text-xl">
-                    YouTube: {profileData.youtube}
+                <h5 className="text-gray-900 font-bold text-xl absolute top-6 left-10 mb-5 text-left">{profileData.name}</h5>
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col space-y-4">
+                    <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
+                      <span className="block w-10 rounded-full p-2 bg-green-500 text-green-800"><BsWhatsapp size={24}/></span> +919302533305
+                    </div>
+                    <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
+                      <span className="block w-10 rounded-full p-2 bg-purple-500 text-purple-800"><CiMail size={24}/></span> {profileData.email}
+                    </div>
                   </div>
-                )}
-                {profileData.instagram && (
-                  <div className="text-gray-900 font-bold text-xl">
-                    Instagram: {profileData.instagram}
+                  <div className="flex flex-col space-y-4">
+                    {profileData.youtube && (
+                      <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
+                        <span className="block w-10 rounded-full p-2 bg-red-500 text-red-800"><AiOutlineYoutube size={24}/></span> {profileData.youtube}
+                      </div>
+                    )}
+                    {profileData.instagram && (
+                      <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
+                        <span className="block w-10 rounded-full p-2 bg-pink-500 text-pink-800"><AiOutlineInstagram size={24}/></span> {profileData.instagram}
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </>
             )}
           </div>
