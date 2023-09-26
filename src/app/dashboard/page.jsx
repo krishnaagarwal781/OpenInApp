@@ -20,13 +20,26 @@ import { signOut, useSession } from "next-auth/react";
 
 function Dashboard() {
   const [isModal2Open, setIsModal2Open] = useState(false);
+  const [profileData, setProfileData] = useState({
+    name: "",
+    email: "",
+    youtube: "",
+    instagram: "",
+  });
+
+  const handleProfileData = (data) => {
+    setProfileData(data);
+    closeModal2();
+  };
+
   const session = useSession();
   const router = useRouter();
-  const sessionProfile = session?.data?.user?.image;
-  console.log(session);
+
   if (session.status === "unauthenticated") {
     router.push("/");
+    return null; // Redirecting, no need to render the rest of the component.
   }
+
   if (session.status === "loading") {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -34,6 +47,9 @@ function Dashboard() {
       </div>
     );
   }
+
+  const sessionProfile = session?.data?.user?.image;
+
   const openModal2 = () => {
     setIsModal2Open(true);
   };
@@ -41,6 +57,10 @@ function Dashboard() {
   const closeModal2 = () => {
     setIsModal2Open(false);
   };
+
+  // Check if the "Add Profile" button should be displayed
+  const shouldDisplayAddProfileButton =
+    !profileData.name.trim() && !profileData.email.trim();
   return (
     <div className="m-10 bg-[#F8FAFF]">
       <button
@@ -202,12 +222,18 @@ function Dashboard() {
               {/* <FaUserCircle size={24} className="mt-1 ml-4" /> */}
               <div>
                 {sessionProfile ? (
-                  <img className="w-8 h-8 rounded-[50%] ml-4 mr-4" src={sessionProfile} alt="User profile icon" />
+                  <img
+                    className="w-8 h-8 rounded-[50%] ml-4 mr-4"
+                    src={sessionProfile}
+                    alt="User profile icon"
+                  />
                 ) : (
                   <FaUserCircle size={24} className="mt-1 ml-4" />
                 )}
               </div>
-              <button className="mr-[40px]" onClick={() => signOut("google")}>Logout</button>
+              <button className="mr-[40px]" onClick={() => signOut("google")}>
+                Logout
+              </button>
               <button
                 data-collapse-toggle="navbar-search"
                 type="button"
@@ -380,23 +406,53 @@ function Dashboard() {
           </div>
 
           <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg ">
-            <div className="rounded-full bg-[#F5F5F5] p-5" onClick={openModal2}>
-              <AiOutlinePlus size={40} className="text-[#999CA0]" />
-            </div>
-            <div className="text-[#858585] mt-4 font-bold">Add Profile</div>
+            {shouldDisplayAddProfileButton ? (
+              <>
+                {" "}
+                <div
+                  className="rounded-full bg-[#F5F5F5] p-5 cursor-pointer"
+                  onClick={openModal2}
+                >
+                  <AiOutlinePlus size={40} className="text-[#999CA0]" />
+                </div>
+                <div className="text-[#858585] mt-4 font-bold">Add Profile</div>
+              </>
+            ) : (
+              // Display the data if it exists
+              // You can customize the rendering of the data here
+              <>
+                <div className="text-gray-900 font-bold text-xl">
+                  Name: {profileData.name}
+                </div>
+                <div className="text-gray-900 font-bold text-xl">
+                  Email: {profileData.email}
+                </div>
+                {profileData.youtube && (
+                  <div className="text-gray-900 font-bold text-xl">
+                    YouTube: {profileData.youtube}
+                  </div>
+                )}
+                {profileData.instagram && (
+                  <div className="text-gray-900 font-bold text-xl">
+                    Instagram: {profileData.instagram}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
         {isModal2Open && (
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 p-4 rounded-lg shadow-lg">
-              <Modal2 onClose={closeModal2} />
+              <Modal2 onClose={closeModal2} onProfileData={handleProfileData} />
+              {console.log(profileData)}
             </div>
           </div>
         )}
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;

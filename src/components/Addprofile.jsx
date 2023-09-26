@@ -1,12 +1,8 @@
-"use client";
+// Modal2.js
 import React, { useState } from "react";
-import { PiWhatsappLogo } from "react-icons/pi";
-import { AiOutlineInstagram } from "react-icons/ai";
-import { AiOutlineYoutube } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
-import {RxCross1} from 'react-icons/rx'
+import { RxCross1 } from "react-icons/rx";
 
-const Modal2 = ({ onClose }) => {
+const Modal2 = ({ onClose, onProfileData }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showContactInput, setShowContactInput] = useState(false);
   const [name, setName] = useState("");
@@ -20,6 +16,17 @@ const Modal2 = ({ onClose }) => {
     return name.trim() !== "" && email.trim() !== "" && phone.trim() !== "";
   };
 
+  const clearModalState = () => {
+    setCurrentStep(1);
+    setShowContactInput(false);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setInstagram("");
+    setYoutube("");
+    setShowValues(false);
+  };
+
   const handleNextClick = () => {
     if (currentStep === 1) {
       setCurrentStep(2);
@@ -27,6 +34,9 @@ const Modal2 = ({ onClose }) => {
     } else {
       if (areRequiredFieldsFilled()) {
         setShowValues(true);
+        onProfileData({ name, email, youtube, instagram });
+        clearModalState();
+        onClose(); // Close the modal
       } else {
         alert("Please fill in all required fields (Name, Email, Phone).");
       }
@@ -46,64 +56,15 @@ const Modal2 = ({ onClose }) => {
   return (
     <div className="flex items-center justify-center h-[100vh]">
       {showValues ? (
-        <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
-          <div className="flex justify-between pl-[24px] pr-[24px]">
-            <h1 className="text-[30px]">{name}</h1>
-          </div>
-          <div className="pl-5 pr-5">
-            <div className="flex items-center">
-              <div className="w-8 h-8 rounded-[50%] bg-green-100 flex justify-center items-center">
-                <PiWhatsappLogo color="green" size="25px" />
-              </div>
-              <span>{phone}</span>
-            </div>
-
-            <div className="flex items-center">
-              <div className="w-8 h-8 rounded-[50%] bg-purple-200 flex justify-center items-center">
-                <CiMail color="purple" size="25px" />
-              </div>
-              <span>{email}</span>
-            </div>
-            {instagram && (
-              <div className="flex items-center">
-                <a
-                  href="https://www.instagram.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="w-8 h-8 rounded-[50%] bg-red-200 flex justify-center items-center">
-                    <AiOutlineInstagram color="red" size="25px" />
-                  </div>
-                </a>
-                <span>
-                  <a href={instagram} target="_blank" rel="noopener noreferrer">
-                    {instagram}
-                  </a>
-                </span>
-              </div>
-            )}
-            {youtube && (
-              <div className="flex items-center">
-                <a href={youtube} target="_blank" rel="noopener noreferrer">
-                  <div className="w-8 h-8 rounded-[50%] bg-red-300 flex justify-center items-center">
-                    <AiOutlineYoutube color="red" size="25px" />
-                  </div>
-                </a>
-                <span>
-                  <a href={youtube} target="_blank" rel="noopener noreferrer">
-                    {youtube}
-                  </a>
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
+        <button className="text-[#999CA0]" onClick={onClose}>
+          <RxCross1 size={24} />
+        </button>
       ) : (
         <div className="w-[29rem] bg-white rounded-[10px] pt-[16px]">
           <div className="flex justify-between px-6 font-bold py-2">
             Add New Profile
             <button className="text-[#999CA0]" onClick={onClose}>
-              <RxCross1 size={24}/>
+              <RxCross1 size={24} />
             </button>
           </div>
 
@@ -129,7 +90,9 @@ const Modal2 = ({ onClose }) => {
             {currentStep === 1 && (
               <div className="space-y-4">
                 <div className="flex flex-col">
-                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Name*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">
+                    Enter Name*
+                  </label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -139,7 +102,9 @@ const Modal2 = ({ onClose }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Email*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">
+                    Enter Email*
+                  </label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -149,7 +114,9 @@ const Modal2 = ({ onClose }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Phone*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">
+                    Enter Phone*
+                  </label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -163,7 +130,10 @@ const Modal2 = ({ onClose }) => {
 
             {showContactInput && (
               <div className="flex flex-col space-y-2">
-                <label className="font-sans font-semibold text-gray-900">Instagram Link <span className="text-gray-400">(Optional)</span> </label>
+                <label className="font-sans font-semibold text-gray-900">
+                  Instagram Link{" "}
+                  <span className="text-gray-400">(Optional)</span>{" "}
+                </label>
                 <input
                   className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB] mb-2"
                   type="text"
@@ -171,7 +141,9 @@ const Modal2 = ({ onClose }) => {
                   value={instagram}
                   onChange={(e) => setInstagram(e.target.value)}
                 />
-                <label className="font-sans font-semibold text-gray-900">YouTube Link <span className="text-gray-400">(Optional)</span></label>
+                <label className="font-sans font-semibold text-gray-900">
+                  YouTube Link <span className="text-gray-400">(Optional)</span>
+                </label>
                 <input
                   className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB] mb-2"
                   type="text"
