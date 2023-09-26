@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
+module.exports = {
+    module: {
+      resolver: {
+        nodeModulesPaths: ['/path/to/styled-jsx/node_modules'],
+      },
+    },
+  };
