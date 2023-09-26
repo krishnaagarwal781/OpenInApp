@@ -15,9 +15,26 @@ import UserGuestChart from "@/components/UserGuestChart";
 import { AiOutlinePlus } from "react-icons/ai";
 import DoughnutChart from "@/components/DoughnutChart";
 import Modal2 from "@/components/Addprofile";
+import { useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
 const dashboard = () => {
   const [isModal2Open, setIsModal2Open] = useState(false);
-
+  const session = useSession();
+  const router = useRouter();
+  console.log(session);
+  if (session.status === "authenticated") {
+    router.push("/dashboard");
+  }
+  if (session.status === "unauthenticated") {
+    router.push("/");
+  }
+  if (session.status === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      </div>
+    );
+  }
   const openModal2 = () => {
     setIsModal2Open(true);
   };
@@ -184,7 +201,7 @@ const dashboard = () => {
 
               <FaRegBell size={24} className="mt-1 ml-4" />
               <FaUserCircle size={24} className="mt-1 ml-4" />
-
+              <button onClick={() => signOut("google")}>Logout</button>
               <button
                 data-collapse-toggle="navbar-search"
                 type="button"
@@ -367,7 +384,7 @@ const dashboard = () => {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 p-4 rounded-lg shadow-lg">
-              <Modal2 onClose={closeModal2}/>
+              <Modal2 onClose={closeModal2} />
             </div>
           </div>
         )}

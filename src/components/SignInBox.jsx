@@ -2,7 +2,7 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillApple } from "react-icons/ai";
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 
 const SignIn = () => {
   return (

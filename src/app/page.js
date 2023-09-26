@@ -1,9 +1,29 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { BiLogoDiscord } from "react-icons/bi";
 import SignInBox from "@/components/SignInBox";
-export default function Home() {
+import { signIn, signOut, useSession } from "next-auth/react";
+const Home = () => {
+  const session = useSession();
+  const router = useRouter();
+  console.log(session);
+  if (session.status === "authenticated") {
+    router.push("/dashboard");
+  }
+  if (session.status === "unauthenticated") {
+    router.push("/");
+  }
+  if (session.status === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      </div>
+    );
+  }
+
   return (
     <main className="bg-[#F8FAFF] h-[100vh] flex">
       <div
@@ -25,10 +45,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className="lg:hidden overflow-hidden w-full h-full relative left-0 top-0 bg-gradient-to-b from-[#4285F4] to-[#286DE0]"
-        
-      >
+      <div className="lg:hidden overflow-hidden w-full h-full relative left-0 top-0 bg-gradient-to-b from-[#4285F4] to-[#286DE0]">
         <div className="absolute w-full h-29 left-[46%] top-14 font-poppins font-bold text-24 leading-[122.69%] tracking-[0.015em] text-white">
           Logo
         </div>
@@ -46,7 +63,7 @@ export default function Home() {
 
       <div className="hidden lg:block w-[50vw] h-[100vh] bg-[#F8FAFF]">
         <div className="absolute right-56 top-44">
-          <SignInBox/>
+          <SignInBox />
         </div>
       </div>
       <div className="lg:hidden w-50vw min-h-screen bg-[#F8FAFF]">
@@ -56,4 +73,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
