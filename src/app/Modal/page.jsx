@@ -4,6 +4,7 @@ import { PiWhatsappLogo } from "react-icons/pi";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { CiMail } from "react-icons/ci";
+import {RxCross1} from 'react-icons/rx'
 
 //modal hai ye
 const Modal1 = () => {
@@ -46,7 +47,7 @@ const Modal1 = () => {
   return (
     <div className="flex items-center justify-center h-[100vh]">
       {showValues ? (
-        <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
+        <div className="w-[25rem] bg-slate-50 rounded-[10px] pt-[16px]">
           <div className="flex justify-between pl-[24px] pr-[24px]">
             <h1 className="text-[30px]">{name}</h1>
 
@@ -102,10 +103,10 @@ const Modal1 = () => {
           </div>
         </div>
       ) : (
-        <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
-          <div className="flex justify-between pl-[24px] pr-[24px]">
+        <div className="w-[25rem] bg-white rounded-[10px] pt-[16px] shadow-md">
+          <div className="flex justify-between px-6 font-bold text-xl">
             Add New Profile
-            <button className="text-[#999CA0]">X</button>
+            <button className="text-[#999CA0]"> <RxCross1 size={24}/> </button>
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col items-center ml-5">

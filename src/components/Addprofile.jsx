@@ -4,6 +4,8 @@ import { PiWhatsappLogo } from "react-icons/pi";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { CiMail } from "react-icons/ci";
+import {RxCross1} from 'react-icons/rx'
+
 const Modal2 = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showContactInput, setShowContactInput] = useState(false);
@@ -97,34 +99,37 @@ const Modal2 = ({ onClose }) => {
           </div>
         </div>
       ) : (
-        <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
-          <div className="flex justify-between pl-[24px] pr-[24px]">
+        <div className="w-[29rem] bg-white rounded-[10px] pt-[16px]">
+          <div className="flex justify-between px-6 font-bold py-2">
             Add New Profile
             <button className="text-[#999CA0]" onClick={onClose}>
-              X
+              <RxCross1 size={24}/>
             </button>
           </div>
+
+          <p className="w-[100%] h-[1px] bg-gray-100 my-2"></p>
+
           <div className="flex justify-between">
-            <div className="flex flex-col items-center ml-5">
+            <div className="flex flex-col items-center ml-5 font-semibold py-4">
               Basic{" "}
               <p
-                className="w-[170px]"
-                style={{ backgroundColor: basicColor, height: "1px" }}
+                className="w-48 mt-2 rounded-full"
+                style={{ backgroundColor: basicColor, height: "4px" }}
               ></p>
             </div>
-            <div className="flex flex-col items-center mr-5">
+            <div className="flex flex-col items-center mr-5 font-semibold py-4">
               Contact{" "}
               <p
-                className="w-[170px]"
-                style={{ backgroundColor: contactColor, height: "1px" }}
+                className="w-48 mt-2 rounded-full"
+                style={{ backgroundColor: contactColor, height: "4px" }}
               ></p>
             </div>
           </div>
           <div className="pl-5 pr-5">
             {currentStep === 1 && (
-              <>
+              <div className="space-y-4">
                 <div className="flex flex-col">
-                  <label className="font-sans">Enter Name*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Name*</label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -134,7 +139,7 @@ const Modal2 = ({ onClose }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-sans">Enter Email*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Email*</label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -144,7 +149,7 @@ const Modal2 = ({ onClose }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-sans">Enter Phone*</label>
+                  <label className="font-sans text-gray-900 font-semibold mb-2 ">Enter Phone*</label>
                   <input
                     className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
                     type="text"
@@ -153,22 +158,22 @@ const Modal2 = ({ onClose }) => {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
-              </>
+              </div>
             )}
 
             {showContactInput && (
-              <div className="flex flex-col">
-                <label className="font-sans">Instagram Link(Optional) </label>
+              <div className="flex flex-col space-y-2">
+                <label className="font-sans font-semibold text-gray-900">Instagram Link <span className="text-gray-400">(Optional)</span> </label>
                 <input
-                  className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
+                  className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB] mb-2"
                   type="text"
                   placeholder="Eg. ..instagram.com/username"
                   value={instagram}
                   onChange={(e) => setInstagram(e.target.value)}
                 />
-                <label className="font-sans">YouTube Link(Optional)</label>
+                <label className="font-sans font-semibold text-gray-900">YouTube Link <span className="text-gray-400">(Optional)</span></label>
                 <input
-                  className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB]"
+                  className="pl-3 pr-3 pt-2 pb-2 font-sans rounded-[5px] border-2 border-solid border-[#EBEBEB] mb-2"
                   type="text"
                   placeholder="Eg. ..youtube.com/username"
                   value={youtube}
@@ -177,11 +182,11 @@ const Modal2 = ({ onClose }) => {
               </div>
             )}
           </div>
-          <p className="w-[100%] h-[1px] bg-black mt-4"></p>
-          <div className="flex justify-end">
+          <p className="w-[100%] h-[1px] bg-gray-100 my-4"></p>
+          <div className="flex justify-end m-4">
             {currentStep === 1 ? (
               <button
-                className={`bg-[#3E84F8] text-white rounded-md p-2 ${
+                className={`bg-[#3E84F8] text-white rounded-md px-4 py-2 ${
                   !areRequiredFieldsFilled() && "cursor-not-allowed opacity-50"
                 }`}
                 onClick={handleNextClick}
@@ -191,7 +196,7 @@ const Modal2 = ({ onClose }) => {
               </button>
             ) : (
               <button
-                className="bg-[#D9D9D9] text-black rounded-md p-2"
+                className="bg-[#D9D9D9] text-black rounded-md px-4 py-2 mr-3"
                 onClick={handleBackClick}
               >
                 Back
@@ -199,7 +204,7 @@ const Modal2 = ({ onClose }) => {
             )}
             {currentStep === 2 && (
               <button
-                className="bg-[#3E84F8] text-white rounded-md p-2"
+                className="bg-[#3E84F8] text-white rounded-md px-4 py-2"
                 onClick={handleNextClick}
               >
                 Done
