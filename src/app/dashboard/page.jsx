@@ -199,10 +199,10 @@ const dashboard = () => {
               </div>
 
               <FaRegBell size={24} className="mt-1 ml-4" />
-              <FaUserCircle size={24} className="mt-1 ml-4" />
-              <div className="w-4 h-4 rounded-r-full">
+              {/* <FaUserCircle size={24} className="mt-1 ml-4" /> */}
+              <div>
                 {sessionProfile ? (
-                  <img src={sessionProfile} alt="User profile icon" />
+                  <img className="w-8 h-8 rounded-[50%]" src={sessionProfile} alt="User profile icon" />
                 ) : (
                   <FaUserCircle size={24} className="mt-1 ml-4" />
                 )}
