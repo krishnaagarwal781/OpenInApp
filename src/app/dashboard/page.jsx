@@ -12,7 +12,8 @@ import { AiOutlineLike } from 'react-icons/ai'
 import { FiUsers } from 'react-icons/fi'
 import "./index.css";
 import UserGuestChart from "@/components/UserGuestChart";
-import  {AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
+import DoughnutChart from "@/components/DoughnutChart";
 const dashboard = () => {
   return (
     <div className="m-10 bg-[#F8FAFF]">
@@ -180,12 +181,23 @@ const dashboard = () => {
         </div>
         <div className="flex gap-4 mt-10 flex-col sm:flex-row">
           <div className="block w-full sm:w-1/2 px-8 py-4  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
-            
+            <div className="flex items-center justify-between px-5 py-2">
+              <h5 className="text-gray-900 text-xl font-bold">Top Products</h5>
+              <p className="text-gray-500 text-sm ">May-June 2021</p>
+            </div>
+            <div className="flex items-center justify-center">
+              <DoughnutChart />
+              <div className="flex flex-col gap-x-2">
+                <span className="flex items-center text-sm font-medium text-gray-900"><span className="flex w-2.5 h-2.5 bg-[#EE8484] rounded-full mr-1.5 flex-shrink-0"></span>Basic Tees</span>
+                <span className="flex items-center text-sm font-medium text-gray-900"><span className="flex w-2.5 h-2.5 bg-[#98D89E] rounded-full mr-1.5 flex-shrink-0"></span>Custom Short Pants</span>
+                <span className="flex items-center text-sm font-medium text-gray-900"><span className="flex w-2.5 h-2.5 bg-[#F6DC7D] rounded-full mr-1.5 flex-shrink-0"></span>Super Hoodies</span>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
             <div className="rounded-full bg-[#F5F5F5] p-5">
-              <AiOutlinePlus size={40} className="text-[#999CA0]"/>
+              <AiOutlinePlus size={40} className="text-[#999CA0]" />
             </div>
             <div className="text-[#858585] mt-4 font-bold">
               Add Profile
