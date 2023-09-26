@@ -18,7 +18,7 @@ import Modal2 from "@/components/Addprofile";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { getSession } from "next-auth/next";
-const dashboard = () => {
+function dashboard() {
   const [isModal2Open, setIsModal2Open] = useState(false);
   const session = useSession();
   const router = useRouter();
@@ -57,7 +57,7 @@ const dashboard = () => {
 
       <aside
         id="default-sidebar"
-        className="fixed top-4 left-3 z-40 w-64 h-[96vh] transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed top-4 left-3 z-40 w-64 h-[97vh] transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gradient-to-b from-[#4285F4] to-[#3C83F9] rounded-2xl">
@@ -207,7 +207,7 @@ const dashboard = () => {
                   <FaUserCircle size={24} className="mt-1 ml-4" />
                 )}
               </div>
-              <button onClick={() => signOut("google")}>Logout</button>
+              <button className="mr-[40px]" onClick={() => signOut("google")}>Logout</button>
               <button
                 data-collapse-toggle="navbar-search"
                 type="button"
