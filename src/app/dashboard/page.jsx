@@ -333,9 +333,9 @@ const dashboard = () => {
         <div className="flex gap-4 mt-10 flex-col sm:flex-row">
           <div className="block w-full sm:w-1/2 px-8 py-4  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100"></div>
 
-          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
-            <div className="rounded-full bg-[#F5F5F5] p-5" onClick={openModal}>
-              <AiOutlinePlus size={40} className="text-[#999CA0]" />
+          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg ">
+            <div className="rounded-full hover:bg-gray-500  bg-[#F5F5F5] p-5" onClick={openModal}>
+              <AiOutlinePlus size={40} className="text-[#999CA0] hover:text-white" />
             </div>
             {isModalOpen && (
               <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -345,7 +345,7 @@ const dashboard = () => {
                 </div>
               </div>
             )}
-            
+
             <div className="text-[#858585] mt-4 font-bold">Add Profile</div>
           </div>
         </div>
