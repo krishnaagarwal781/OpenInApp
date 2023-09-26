@@ -195,9 +195,9 @@ const dashboard = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg hover:bg-gray-100">
-            <div className="rounded-full bg-[#F5F5F5] p-5">
-              <AiOutlinePlus size={40} className="text-[#999CA0]" />
+          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 px-8 py-16  bg-white border border-gray-200 rounded-3xl shadow-lg ">
+            <div className="rounded-full bg-[#F5F5F5] hover:bg-gray-400 p-5">
+              <AiOutlinePlus size={40} className="text-[#999CA0] hover:text-white" />
             </div>
             <div className="text-[#858585] mt-4 font-bold">
               Add Profile
