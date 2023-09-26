@@ -426,15 +426,15 @@ function Dashboard() {
               <>
                 <h5 className="text-gray-900 font-bold text-xl absolute top-6 left-10 mb-5 text-left">{profileData.name}</h5>
                 <div className="flex items-center justify-between">
-                  <div className="flex flex-col space-y-4">
+                  <div className="flex flex-col space-y-6">
                     <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
-                      <span className="block w-10 rounded-full p-2 bg-green-500 text-green-800"><BsWhatsapp size={24}/></span> +919302533305
+                      <span className="block w-10 rounded-full p-2 bg-green-500 text-green-800"><BsWhatsapp size={24}/></span> +91767676765
                     </div>
                     <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
                       <span className="block w-10 rounded-full p-2 bg-purple-500 text-purple-800"><CiMail size={24}/></span> {profileData.email}
                     </div>
                   </div>
-                  <div className="flex flex-col space-y-4">
+                  <div className="flex flex-col space-y-6">
                     {profileData.youtube && (
                       <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
                         <span className="block w-10 rounded-full p-2 bg-red-500 text-red-800"><AiOutlineYoutube size={24}/></span> {profileData.youtube}
