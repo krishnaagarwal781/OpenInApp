@@ -4,6 +4,8 @@ import { PiWhatsappLogo } from "react-icons/pi";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { CiMail } from "react-icons/ci";
+
+//modal hai ye
 const Modal1 = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showContactInput, setShowContactInput] = useState(false);
