@@ -22,9 +22,6 @@ const dashboard = () => {
   const session = useSession();
   const router = useRouter();
   console.log(session);
-  if (session.status === "authenticated") {
-    router.push("/dashboard");
-  }
   if (session.status === "unauthenticated") {
     router.push("/");
   }

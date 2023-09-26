@@ -13,9 +13,6 @@ const Home = () => {
   if (session.status === "authenticated") {
     router.push("/dashboard");
   }
-  if (session.status === "unauthenticated") {
-    router.push("/");
-  }
   if (session.status === "loading") {
     return (
       <div className="flex justify-center items-center h-screen">
