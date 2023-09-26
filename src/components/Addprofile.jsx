@@ -47,10 +47,6 @@ const Modal2 = ({ onClose }) => {
         <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
           <div className="flex justify-between pl-[24px] pr-[24px]">
             <h1 className="text-[30px]">{name}</h1>
-
-            <button className="text-[#999CA0]" onClick={onClose}>
-              X
-            </button>
           </div>
           <div className="pl-5 pr-5">
             <div className="flex items-center">
@@ -104,7 +100,9 @@ const Modal2 = ({ onClose }) => {
         <div className="w-[25rem] bg-slate-300 rounded-[10px] pt-[16px]">
           <div className="flex justify-between pl-[24px] pr-[24px]">
             Add New Profile
-            <button className="text-[#999CA0]" onClick={onClose}>X</button>
+            <button className="text-[#999CA0]" onClick={onClose}>
+              X
+            </button>
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col items-center ml-5">
