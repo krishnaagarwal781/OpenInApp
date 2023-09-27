@@ -1,27 +1,48 @@
 "use client";
-import { useEffect, useRef } from 'react';
-import { Chart } from 'chart.js/auto';
+import { useEffect, useRef, useState } from "react";
+import { Chart } from "chart.js/auto";
+import axios from "axios";
 
 const UserGuestChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const [fetchRights, setFetchRights] = useState("");
 
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://backblockright.onrender.com/drm/getRights/",
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data.response);
+
+        setFetchRights(response.data.response);
+        console.log(fetchRights)
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [setFetchRights]);
   useEffect(() => {
     // Sample data for user and guest counts over weeks
     const data = {
-      labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+      labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
       datasets: [
         {
-          label: 'Users',
-          backgroundColor: 'rgba(152, 216, 158, 1)',
-          borderColor: 'rgba(152, 216, 158, 1)',
+          label: "Users",
+          backgroundColor: "rgba(152, 216, 158, 1)",
+          borderColor: "rgba(152, 216, 158, 1)",
           borderWidth: 1,
           data: [50, 65, 80, 45, 60],
         },
         {
-          label: 'Guests',
-          backgroundColor: 'rgba(238, 132, 132, 1)',
-          borderColor: 'rgba(238, 132, 132, 1)',
+          label: "Guests",
+          backgroundColor: "rgba(238, 132, 132, 1)",
+          borderColor: "rgba(238, 132, 132, 1)",
           borderWidth: 1,
           data: [30, 45, 60, 35, 50],
         },
@@ -41,7 +62,7 @@ const UserGuestChart = () => {
       },
     };
 
-    const ctx = chartRef.current.getContext('2d');
+    const ctx = chartRef.current.getContext("2d");
 
     // Destroy the previous chart if it exists
     if (chartInstance.current) {
@@ -49,14 +70,14 @@ const UserGuestChart = () => {
     }
 
     chartInstance.current = new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: data,
       options: options,
     });
   }, []);
 
   return (
-    <div style={{ width: '80%',height:'90%', margin: 'auto' }}>
+    <div style={{ width: "80%", height: "90%", margin: "auto" }}>
       <canvas ref={chartRef} id="userGuestChart"></canvas>
     </div>
   );

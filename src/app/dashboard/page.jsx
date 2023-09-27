@@ -398,15 +398,15 @@ function Dashboard() {
               <div className="flex flex-col gap-x-2">
                 <span className="flex items-center text-sm font-medium text-gray-900">
                   <span className="flex w-2.5 h-2.5 bg-[#EE8484] rounded-full mr-1.5 flex-shrink-0"></span>
-                  Basic Tees
+                  Cap 
                 </span>
                 <span className="flex items-center text-sm font-medium text-gray-900">
                   <span className="flex w-2.5 h-2.5 bg-[#98D89E] rounded-full mr-1.5 flex-shrink-0"></span>
-                  Custom Short Pants
+                  Hoodies
                 </span>
                 <span className="flex items-center text-sm font-medium text-gray-900">
-                  <span className="flex w-2.5 h-2.5 bg-[#EE8484] rounded-full mr-1.5 flex-shrink-0"></span>
-                  Super Hoodies
+                  <span className="flex w-2.5 h-2.5 bg-[#F6DC7D] rounded-full mr-1.5 flex-shrink-0"></span>
+                  T-Shirts
                 </span>
               </div>
             </div>
