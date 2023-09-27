@@ -34,7 +34,7 @@ const Modal2 = ({ onClose, onProfileData }) => {
     } else {
       if (areRequiredFieldsFilled()) {
         setShowValues(true);
-        onProfileData({ name, email, youtube, instagram });
+        onProfileData({ name, email,phone, youtube, instagram });
         clearModalState();
         onClose(); // Close the modal
       } else {

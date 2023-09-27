@@ -8,7 +8,11 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { LuBanknote } from "react-icons/lu";
-import { AiOutlineInstagram, AiOutlineLike, AiOutlineYoutube } from "react-icons/ai";
+import {
+  AiOutlineInstagram,
+  AiOutlineLike,
+  AiOutlineYoutube,
+} from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import "./index.css";
 import UserGuestChart from "@/components/UserGuestChart";
@@ -424,25 +428,39 @@ function Dashboard() {
               // Display the data if it exists
               // You can customize the rendering of the data here
               <>
-                <h5 className="text-gray-900 font-bold text-xl absolute top-6 left-10 mb-5 text-left">{profileData.name}</h5>
+                <h5 className="text-gray-900 font-bold text-xl absolute top-6 left-10 mb-5 text-left">
+                  {profileData.name}
+                </h5>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col space-y-6">
                     <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
-                      <span className="block w-10 rounded-full p-2 bg-green-500 text-green-800"><BsWhatsapp size={24}/></span> +91767676765
+                      <span className="block w-10 rounded-full p-2 bg-green-100 text-[#3CC952]">
+                        <BsWhatsapp size={24} />
+                      </span>{" "}
+                      {profileData.phone}
                     </div>
                     <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
-                      <span className="block w-10 rounded-full p-2 bg-purple-500 text-purple-800"><CiMail size={24}/></span> {profileData.email}
+                      <span className="block w-10 rounded-full p-2 bg-[#EBE6F9] text-[#5C33CF]">
+                        <CiMail size={24} />
+                      </span>{" "}
+                      {profileData.email}
                     </div>
                   </div>
                   <div className="flex flex-col space-y-6">
                     {profileData.youtube && (
                       <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
-                        <span className="block w-10 rounded-full p-2 bg-red-500 text-red-800"><AiOutlineYoutube size={24}/></span> {profileData.youtube}
+                        <span className="block w-10 rounded-full p-2 bg-[#FFE9E9] text-[#FF0000]">
+                          <AiOutlineYoutube size={24} />
+                        </span>{" "}
+                        {profileData.youtube}
                       </div>
                     )}
                     {profileData.instagram && (
                       <div className="text-gray-900 font-light text-sm flex justify-center items-center gap-x-2 w-44">
-                        <span className="block w-10 rounded-full p-2 bg-pink-500 text-pink-800"><AiOutlineInstagram size={24}/></span> {profileData.instagram}
+                        <span className="block w-10 rounded-full p-2 bg-[#FFE9EC] text-[#FF4E64]">
+                          <AiOutlineInstagram size={24} />
+                        </span>{" "}
+                        {profileData.instagram}
                       </div>
                     )}
                   </div>
