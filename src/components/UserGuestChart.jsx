@@ -19,7 +19,7 @@ const UserGuestChart = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.response);
+        // console.log(response.data.response);
 
         // Extract 'tshirtRights' and 'hoodieRights' merchant quantities
         const tshirtQuantities = [];

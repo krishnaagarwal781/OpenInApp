@@ -59,6 +59,7 @@ const DoughnutChart = () => {
   };
 
   const options = {
+    cutout:'75%',
     plugins: {
       legend: {
         display: false,
