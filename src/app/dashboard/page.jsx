@@ -375,11 +375,11 @@ function Dashboard() {
             <div className="flex gap-x-2">
               <span className="flex items-center text-sm font-medium text-gray-900">
                 <span className="flex w-2.5 h-2.5 bg-[#98D89E] rounded-full mr-1.5 flex-shrink-0"></span>
-                Users
+                T-Shirt Merchant Quantity
               </span>
               <span className="flex items-center text-sm font-medium text-gray-900">
                 <span className="flex w-2.5 h-2.5 bg-[#EE8484] rounded-full mr-1.5 flex-shrink-0"></span>
-                Guests
+                Hoodie Merchant Quantity
               </span>
             </div>
           </div>

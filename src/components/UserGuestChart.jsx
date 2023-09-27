@@ -7,7 +7,8 @@ const UserGuestChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
   const [fetchRights, setFetchRights] = useState("");
-
+  const [tshirtMerchantQuantities, setTshirtMerchantQuantities] = useState([]);
+  const [hoodieMerchantQuantities, setHoodieMerchantQuantities] = useState([]);
 
   useEffect(() => {
     const options = {
@@ -20,31 +21,45 @@ const UserGuestChart = () => {
       .then(function (response) {
         console.log(response.data.response);
 
+        // Extract 'tshirtRights' and 'hoodieRights' merchant quantities
+        const tshirtQuantities = [];
+        const hoodieQuantities = [];
+        response.data.response.forEach((item) => {
+          tshirtQuantities.push(item.tshirtRights.merchantQuantity || 0);
+          hoodieQuantities.push(item.hoodieRights.merchantQuantity || 0);
+        });
+
+        // Update state with the extracted quantities
+        setTshirtMerchantQuantities(tshirtQuantities);
+        setHoodieMerchantQuantities(hoodieQuantities);
+
         setFetchRights(response.data.response);
-        console.log(fetchRights)
       })
       .catch(function (error) {
         console.error(error);
       });
   }, [setFetchRights]);
+
   useEffect(() => {
-    // Sample data for user and guest counts over weeks
+    // Data for the chart
     const data = {
-      labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
+      labels: Array.isArray(fetchRights) // Check if fetchRights is an array
+        ? fetchRights.map((item, index) => `ID ${index}`)
+        : [], // Provide an empty array as labels if fetchRights is not an array
       datasets: [
         {
-          label: "Users",
+          label: "T-Shirt Merchant Quantity",
           backgroundColor: "rgba(152, 216, 158, 1)",
           borderColor: "rgba(152, 216, 158, 1)",
           borderWidth: 1,
-          data: [50, 65, 80, 45, 60],
+          data: tshirtMerchantQuantities,
         },
         {
-          label: "Guests",
+          label: "Hoodie Merchant Quantity",
           backgroundColor: "rgba(238, 132, 132, 1)",
           borderColor: "rgba(238, 132, 132, 1)",
           borderWidth: 1,
-          data: [30, 45, 60, 35, 50],
+          data: hoodieMerchantQuantities,
         },
       ],
     };
@@ -58,6 +73,7 @@ const UserGuestChart = () => {
       plugins: {
         legend: {
           display: false,
+          position: "below",
         },
       },
     };
@@ -74,7 +90,7 @@ const UserGuestChart = () => {
       data: data,
       options: options,
     });
-  }, []);
+  }, [tshirtMerchantQuantities, hoodieMerchantQuantities]);
 
   return (
     <div style={{ width: "80%", height: "90%", margin: "auto" }}>
