@@ -15,7 +15,7 @@ const UserGuestChart = () => {
       method: "GET",
       url: "https://backblockright.onrender.com/drm/getRights/",
     };
-
+    //yoyo
     axios
       .request(options)
       .then(function (response) {
